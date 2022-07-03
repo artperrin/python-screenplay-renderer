@@ -36,6 +36,8 @@ def get_header(line: str) -> str:
         return "dir"
     elif begins_with(line, "\\transition"):
         return "transition"
+    elif begins_with(line, "<"):
+        return "comment"
     else:
         return "action"
 

@@ -76,9 +76,11 @@ def doc_to_scenes(document: list) -> list:
         line = doc_copy.pop(0)
         try:
             # if the previous line was a summary or a new scene, no need for newline
-            if line_type in ["scene", "summary"] and line == "\n":
+            if line_type in {"scene", "summary"} and line == "\n":
                 continue
             line_type = get_header(line)
+            if line_type == "comment":
+                continue
             # first, if we were in an action and it is now finished, append the cached action to the scene
             if in_action and line_type != "action":
                 in_action = False
@@ -91,9 +93,7 @@ def doc_to_scenes(document: list) -> list:
                 new_scene.add_action(new_action)
             # next, check the actual type
             if line_type == "scene":
-                if (
-                    in_scene
-                ):  # if we were in a scene, it is a new one, so append the previous to the set
+                if in_scene:  # if we were in a scene, it is a new one, so append the previous to the set
                     scenes.append(new_scene)
                 in_scene = True  # create a new scene
                 value, location, time = get_scene_info(line)
@@ -115,6 +115,8 @@ def doc_to_scenes(document: list) -> list:
                 new_scene.add_dir(Dir(dir_txt))
             elif line_type == "transition":
                 new_scene.set_transition(Transition(get_transition(line)))
+            elif line_type == "comment":
+                continue
             # if we see the end marker, break the loop
             elif line_type == "end":
                 scenes.append(new_scene)
