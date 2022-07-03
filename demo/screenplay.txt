@@ -1,0 +1,13 @@
+\scene{ext}{Atlantic ocean}{day}
+
+\summary{The two characters are on their way to the Lighthouse.}
+
+\dir{Black. The rumble of a lonely foghorn. Low. Faint.}
+\dir{Then a wide shot at a boat.}
+
+Fog. Nothing else in sight. Slowly, a steam boat emerges.
+OLD and YOUNG are on the deck. They are looking right in front of them, where a lonely light emerges from the fog. The foghorn's noise is louder now.
+
+<The previous screenplay comes from one of my favorite movie: The Lighthouse (dir. Robert Eggers) : https://letterboxd.com/film/the-lighthouse-2019/>
+
+\end
